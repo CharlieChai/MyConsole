@@ -15,7 +15,7 @@ class Console {
 public:
     typedef std::string str;
     typedef std::function<void (int)> cmd_fn;
-
+    void (Console::*pf)(int);
     Console();
 
     Console &accept(){
@@ -24,7 +24,7 @@ public:
             getline(std::cin, _user_input);
             this->_cmd_history.push_back(_user_input);
             _lines++;
-            cmd_list[_user_input](1);
+//            cmd_list[_user_input](1);
             if(_user_input == "exit"){
                 break;
             }else{
@@ -41,11 +41,11 @@ public:
         }
     }
 
-private:
+//    std::map<str, pf> cmd_list = {
+//            {"history", &cmdHistory}
+//    };
 
-    std::map<str, std::function<void (int)>> cmd_list = {
-            {"history", cmdHistory}
-    };
+private:
     uint16_t _lines = 0;
     str _user_input;
     std::vector<str> _cmd_history;
@@ -59,4 +59,5 @@ Console::Console() {
     _user_input = "";
     std::cout << sayHello() << std::endl;
 }
+
 #endif //C_PRIMER_CONSOLE_H

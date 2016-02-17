@@ -6,8 +6,6 @@
 #include <map>
 #include <functional>
 
-#include "sales_data.h"
-#include "screen.h"
 #include "console.h"
 
 using namespace std;
@@ -17,8 +15,8 @@ using namespace std;
 #pragma message("_X86 macro activated!")
 #endif
 
-void f(){
-    cout <<  1 << endl;
+void f(int a){
+    cout <<  a << endl;
 }
 
 int main(int argc, char **argv){
