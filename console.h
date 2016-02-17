@@ -1,6 +1,3 @@
-//
-// Created by charlie01.chai on 2016/2/16.
-//
 
 #ifndef C_PRIMER_CONSOLE_H
 #define C_PRIMER_CONSOLE_H
