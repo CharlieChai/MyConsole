@@ -1,14 +1,8 @@
 #include <iostream>
-#include <stdlib.h>
-#include <vector>
-#include <cctype>
-#include <assert.h>
-#include <map>
-#include <functional>
 
-#include "console.hpp"
+#include "console.h"
 #include "sales_data.h"
-#include "cprocess.hpp"
+#include "cprocess.h"
 
 using namespace std;
 

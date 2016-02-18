@@ -33,5 +33,5 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     # using Visual Studio C++
 endif()
 
-set(SOURCE_FILES main.cpp sales_data.h console.hpp cprocess.hpp console.cpp)
-add_executable(MyConsole ${SOURCE_FILES} sales_data.h console.hpp cprocess.hpp console.cpp)
+set(SOURCE_FILES main.cpp sales_data.h console.h cprocess.h console.cpp)
+add_executable(MyConsole ${SOURCE_FILES})
