@@ -6,7 +6,9 @@
 #include <map>
 #include <functional>
 
-#include "console.h"
+#include "console.hpp"
+#include "sales_data.h"
+#include "cprocess.hpp"
 
 using namespace std;
 
