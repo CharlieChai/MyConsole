@@ -25,7 +25,7 @@ public:
     Console &accept();
     void cmdHistory(int);
     cmd_list l;
-    void callFunc(cmd_list &, Console::str &);
+    void callFunc(const str&);
 private:
     uint16_t _lines = 0;
     str _user_input;

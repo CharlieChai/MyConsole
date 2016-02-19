@@ -6,8 +6,7 @@
 //
 Console::Console() {
     _user_input = "";
-    pf fun1 = &Console::cmdHistory;
-    l.insert(std::make_pair("history", fun1));
+    l.insert(std::make_pair("history", &Console::cmdHistory));
     std::cout << sayHello() << std::endl;
 }
 
@@ -17,11 +16,11 @@ Console &Console::accept(){
         getline(std::cin, _user_input);
         this->_cmd_history.push_back(_user_input);
         _lines++;
-        callFunc(l, _user_input);
+        callFunc(_user_input);
         if(_user_input == "exit"){
             break;
         }else{
-            CONSOLE_OUTPUT("ERROR");
+            CONSOLE_OUTPUT("Command <"+ _user_input + "> not exist");
         }
         std::cin.clear();
     }
@@ -29,17 +28,16 @@ Console &Console::accept(){
 }
 
 
-void Console::callFunc(cmd_list &cmd, Console::str &func) {
-    auto iter = cmd.find(func);
-    if(iter != cmd.end()) {
-        pf f = (*iter).second;
-        cout << f(1) << endl;
+void Console::callFunc(const Console::str &key) {
+    cmd_list::const_iterator iter = l.find(key);
+    if(iter != l.end()) {
+        (this->*(iter->second))(233);
     }else{
         //errors...
     }
 }
 
-CMD_API void Console::cmdHistory(int){
+void Console::cmdHistory(int){
     for(str &s : _cmd_history){
         CONSOLE_OUTPUT(s);
     }
