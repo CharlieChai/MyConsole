@@ -1,13 +1,13 @@
 #include <iostream>
 #include "console.h"
-#include <boost/unordered_map.hpp>
 
 //
 // Created by charlie01.chai on 2016/2/18.
 //
 Console::Console() {
     _user_input = "";
-    l.insert(std::make_pair("history", &Console::cmdHistory));
+    pf fun1 = &Console::cmdHistory;
+    l.insert(std::make_pair("history", fun1));
     std::cout << sayHello() << std::endl;
 }
 
@@ -32,7 +32,8 @@ Console &Console::accept(){
 void Console::callFunc(cmd_list &cmd, Console::str &func) {
     auto iter = cmd.find(func);
     if(iter != cmd.end()) {
-        (*iter->second)(1);
+        pf f = (*iter).second;
+        cout << f(1) << endl;
     }else{
         //errors...
     }
