@@ -5,4 +5,8 @@
 #ifndef MYCONSOLE_CPROCESS_H
 #define MYCONSOLE_CPROCESS_H
 
+template< typename... Args>
+class Cprocss {
+
+};
 #endif //MYCONSOLE_CPROCESS_H

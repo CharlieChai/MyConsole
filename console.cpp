@@ -10,6 +10,10 @@ Console::Console() {
     std::cout << sayHello() << std::endl;
 }
 
+Console::~Console() {
+    //do something
+}
+
 Console &Console::accept(){
     while(1) {
         CONSOLE_REDAY;
@@ -27,6 +31,9 @@ Console &Console::accept(){
     return *this;
 }
 
+Console::str Console::sayHello(){
+    return "\n#### THIS IS MY CONSOLE ####";
+};
 
 void Console::callFunc(const Console::str &key) {
     cmd_list::const_iterator iter = l.find(key);
@@ -37,12 +44,10 @@ void Console::callFunc(const Console::str &key) {
     }
 }
 
+//###############################
 void Console::cmdHistory(int){
     for(str &s : _cmd_history){
         CONSOLE_OUTPUT(s);
     }
 }
 
-Console::str Console::sayHello(){
-    return "\n#### THIS IS MY CONSOLE ####";
-};

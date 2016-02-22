@@ -22,6 +22,7 @@ public:
     typedef map<string, pf> cmd_list;
 
     Console();
+    ~Console();
     Console &accept();
     void cmdHistory(int);
     cmd_list l;
