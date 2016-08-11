@@ -7,7 +7,7 @@
 #include <map>
 
 #define CONSOLE_IDENTIFIER ">>"
-#define CONSOLE_OUTPUT(x) (std::cout << x << "\n" )
+#define CONSOLE_OUTPUT(x) (std::cout << x << "\n")
 #define CONSOLE_REDAY (std::cout << CONSOLE_IDENTIFIER)
 #define CONSOLE_NEWLINE (std::cout << std::endl )
 #define CMD_API
@@ -29,7 +29,7 @@ public:
     void cmdHistory(param_list);
     void cmdParse(param_list);
     cmd_list l;
-    void callFunc(const str&, param_list);
+    void callFunc(param_list);
     param_list split(string &, const char &);
 private:
     uint16_t _lines = 0;
