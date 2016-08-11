@@ -18,15 +18,19 @@ class Console {
 
 public:
     typedef std::string str;
-    typedef void (Console::*pf)(int);
+    typedef vector<string> param_list;
+    typedef void (Console::*pf)(param_list);
     typedef map<string, pf> cmd_list;
 
     Console();
     ~Console();
     Console &accept();
-    void cmdHistory(int);
+
+    void cmdHistory(param_list);
+    void cmdParse(param_list);
     cmd_list l;
-    void callFunc(const str&);
+    void callFunc(const str&, param_list);
+    param_list split(string &, const char &);
 private:
     uint16_t _lines = 0;
     str _user_input;
