@@ -1,6 +1,6 @@
 #include <iostream>
+#include <string>
 #include "console.h"
-#include <cstring>
 
 //
 // Created by charlie01.chai on 2016/2/18.
@@ -36,7 +36,7 @@ Console &Console::accept(){
     return *this;
 }
 
-Console::str Console::sayHello(){
+CMD_API Console::str Console::sayHello(){
     return "\n#### THIS IS MY CONSOLE ####";
 };
 
@@ -65,18 +65,16 @@ Console::param_list Console::split(string &s, const char &c){
     return result;
 }
 
-//###############################
-void Console::cmdHistory(param_list pl){
+//cmd
+CMD_API void Console::cmdHistory(param_list pl){
     for(str &s : _cmd_history){
         CONSOLE_OUTPUT(s);
     }
 }
 
-void Console::cmdParse(param_list pl){
+CMD_API void Console::cmdParse(param_list pl){
     for(string &str: pl){
         CONSOLE_OUTPUT(str);
     }
 }
-
-
 
