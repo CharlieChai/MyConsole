@@ -26,7 +26,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     SET (CMAKE_RANLIB  "/usr/bin/llvm-ranlib")
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     # using GCC
-    set(CMAKE_CXX_FLAGS   "-std=gnu++11 -static-libgcc -static-libstdc++")           # c++11
+    set(CMAKE_CXX_FLAGS   "-std=gnu++11 -static-libgcc -static-libstdc++ -std=c++11")           # c++11
     set(CMAKE_CXX_FLAGS   "-g")                     # 调试信息
     set(CMAKE_CXX_FLAGS   "-Wall")                  # 开启所有警告
     set(CMAKE_CXX_FLAGS_DEBUG   "-O0" )             # 调试包不优化
@@ -38,7 +38,7 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     # using Visual Studio C++
 endif()
 
-link_libraries(curl)
+#link_libraries(curl)
 
-set(SOURCE_FILES main.cpp sales_data.h console.h cprocess.h console.cpp cprocess.cpp)
+set(SOURCE_FILES main.cpp sales_data.h console.h cprocess.h console.cpp cprocess.cpp quicksort.h)
 add_executable(MyConsole ${SOURCE_FILES})

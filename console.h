@@ -26,11 +26,13 @@ public:
     ~Console();
     Console &accept();
 
-    void cmdHistory(param_list);
-    void cmdParse(param_list);
-    cmd_list l;
+    cmd_list cmd_map;
     void callFunc(param_list);
     param_list split(string &, const char &);
+
+	CMD_API void cmdHistory(param_list);
+	CMD_API void cmdParse(param_list);
+	CMD_API void cmdHelp(param_list);
 private:
     uint16_t _lines = 0;
     str _user_input;

@@ -7,8 +7,9 @@
 //
 Console::Console(){
     _user_input = "";
-    l.insert(std::make_pair("history", &Console::cmdHistory));
-    l.insert(std::make_pair("parse", &Console::cmdParse));
+    cmd_map.insert(std::make_pair("history", &Console::cmdHistory));
+    cmd_map.insert(std::make_pair("parse", &Console::cmdParse));
+	cmd_map.insert(std::make_pair("help", &Console::cmdHelp));
     std::cout << sayHello() << std::endl;
 }
 
@@ -41,11 +42,11 @@ CMD_API Console::str Console::sayHello(){
 };
 
 void Console::callFunc(param_list pl){
-    cmd_list::const_iterator iter = l.find(pl.front());
-    if(iter != l.end()){
+    cmd_list::const_iterator iter = cmd_map.find(pl.front());
+    if(iter != cmd_map.end()){
         (this->*(iter->second))(pl);
     }else{
-        CONSOLE_OUTPUT("Command [" + pl.front() + "] not exist");
+        CONSOLE_OUTPUT("[Error] Command [" + pl.front() + "] not exist");
     }
 }
 
@@ -65,11 +66,11 @@ Console::param_list Console::split(string &s, const char &c){
     return result;
 }
 
-//cmd
 CMD_API void Console::cmdHistory(param_list pl){
     for(str &s : _cmd_history){
         CONSOLE_OUTPUT(s);
     }
+
 }
 
 CMD_API void Console::cmdParse(param_list pl){
@@ -78,3 +79,10 @@ CMD_API void Console::cmdParse(param_list pl){
     }
 }
 
+CMD_API void Console::cmdHelp(param_list pl) {
+	map<string, pf>::iterator iter = Console::cmd_map.begin();
+	while (iter != Console::cmd_map.end()) {
+		CONSOLE_OUTPUT(">Command: "+iter->first);
+		iter++;
+	}
+}
