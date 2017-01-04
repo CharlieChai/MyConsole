@@ -33,6 +33,8 @@ public:
 	CMD_API void cmdHistory(param_list);
 	CMD_API void cmdParse(param_list);
 	CMD_API void cmdHelp(param_list);
+	CMD_API void cmdKochCurve(param_list);
+	CMD_API void cmdQuickSort(param_list);
 private:
     uint16_t _lines = 0;
     str _user_input;

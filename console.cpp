@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
 #include "console.h"
+#include "quicksort.h"
 
+using IntroductionToAlgorithm::SortAlgorithm::partition;
+using IntroductionToAlgorithm::SortAlgorithm::quick_sort;
 //
 // Created by charlie01.chai on 2016/2/18.
 //
@@ -10,6 +13,7 @@ Console::Console(){
     cmd_map.insert(std::make_pair("history", &Console::cmdHistory));
     cmd_map.insert(std::make_pair("parse", &Console::cmdParse));
 	cmd_map.insert(std::make_pair("help", &Console::cmdHelp));
+	cmd_map.insert(std::make_pair("quicksort", &Console::cmdQuickSort));
     std::cout << sayHello() << std::endl;
 }
 
@@ -44,6 +48,7 @@ CMD_API Console::str Console::sayHello(){
 void Console::callFunc(param_list pl){
     cmd_list::const_iterator iter = cmd_map.find(pl.front());
     if(iter != cmd_map.end()){
+		pl.erase(pl.cbegin());
         (this->*(iter->second))(pl);
     }else{
         CONSOLE_OUTPUT("[Error] Command [" + pl.front() + "] not exist");
@@ -84,5 +89,22 @@ CMD_API void Console::cmdHelp(param_list pl) {
 	while (iter != Console::cmd_map.end()) {
 		CONSOLE_OUTPUT(">Command: "+iter->first);
 		iter++;
+	}
+}
+
+CMD_API void Console::cmdKochCurve(param_list pl){
+
+}
+
+CMD_API void Console::cmdQuickSort(param_list pl){
+	std::vector<int> input;
+	for (auto elem : pl) {
+		input.push_back(std::stoi(elem));
+	}
+	if (!input.empty()) {
+		quick_sort(input.begin(), input.end());
+	}
+	for (int value : input) {
+		CONSOLE_OUTPUT(value);
 	}
 }
